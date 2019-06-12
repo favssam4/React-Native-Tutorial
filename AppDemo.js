@@ -10,7 +10,8 @@ import { addPlace, deletePlace, selectPlace, deselectPlace } from './src/store/a
 class AppDemo extends React.Component {
     
   placeAddedHandler = placeName => {
-    this.props.onAddPlace(placeName)
+    this.props.onAddPlace(placeName);
+    console.log('Place added');
   };
 
   placeSelectedHandler = key => {
