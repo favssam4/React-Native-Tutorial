@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
-class AuthScreen extends Component{
+class SharePlaceScreen extends Component {
     static navigationOptions = {
-        title: 'Auth screen'
+        title: 'Find Place'
     }
     render() {
         const { navigation } = this.props.navigation;
-        return(
+        return (
             <View>
-                <Text>Auth Screen</Text>
+                <Text>On SharePlaceScreens</Text>
             </View>
         );
     }
 }
 
-export default AuthScreen;
+export default SharePlaceScreen;

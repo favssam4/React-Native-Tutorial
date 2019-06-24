@@ -1,10 +1,16 @@
 import AuthScreen from './src/screens/Auth/Auth';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import FindPlaceScreen from './src/screens/FindPlace/FindPlace';
+import SharePlaceScreen from './src/screens/SharePlace/SharePlace';
+import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation';
 
 const RootStack = createStackNavigator({
-  Home: { screen: AuthScreen}
+  Home: { screen: AuthScreen }
 });
 
-const App = createAppContainer(RootStack);
+const TabNavigator = createBottomTabNavigator({
+  FindPlace: { screen: FindPlaceScreen, title: "FindPlace" },
+  SharePlace: { screen: SharePlaceScreen, title: "SharePlace" }
+});
+const App = createAppContainer(TabNavigator);
 
 export default App;
