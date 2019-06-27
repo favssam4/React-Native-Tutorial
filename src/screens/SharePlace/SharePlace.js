@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 
 class SharePlaceScreen extends Component {
     static navigationOptions = {
-        title: 'Find Place'
+        title: 'Share Place'
     }
     render() {
         const { navigation } = this.props.navigation;
