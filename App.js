@@ -4,7 +4,10 @@ import FindPlaceScreen from './src/screens/FindPlace/FindPlace';
 import SharePlaceScreen from './src/screens/SharePlace/SharePlace';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
-import { Text } from 'react-native';
+import { Provider } from 'react-redux';
+import configureStore from './src/store/configureStore';
+
+const store = configureStore();
 
 const RootStack = createStackNavigator({
   Home: { screen: AuthScreen }
@@ -27,6 +30,14 @@ const TabNavigator = createBottomTabNavigator(
   }
 );
 
-const App = createAppContainer(TabNavigator);
+const AppContainer = createAppContainer(TabNavigator);
 
-export default App;
+export default class App extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    )
+  }
+};
