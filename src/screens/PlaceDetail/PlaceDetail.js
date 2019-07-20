@@ -1,24 +1,35 @@
-import React from 'react';
+import React, { Comp } from 'react';
 import { View, Image, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { connect } from 'react-redux';
+import { deletePlace } from '../../store/actions/index';
 
-const placeDetail = props => {
-    const { state } = props.navigation;
-    return (
-        <View style={styles.modalContainer}>
+class PlaceDetail extends React.Component {
+    placeDeletedHandler = () => {
+        this.props.onDeletePlace(this.props.navigation.getParam('selectedPlace','').key);
+        this.props.navigation.goBack();
+    }
+
+    render() {
+        const { state } = this.props.navigation;
+
+        return(
+            <View style={styles.modalContainer}>
             <View>
                 <Image source={state.params.selectedPlace.image} style={styles.placeImage} />
+                { console.log(state.params.selectedPlace.value)}
+                { console.log(state.params.selectedPlace.key)}
                 <Text style={styles.placeName}>{state.params.selectedPlace.value}</Text>
-                <TouchableOpacity onPress={props.OnItemDeleted}>
+                <TouchableOpacity onPress={this.placeDeletedHandler}>
                     <View style={styles.deleteButton}>
                         <Ionicons name="ios-trash" size={32} color="red"></Ionicons>
                     </View>
                 </TouchableOpacity>
-                <Button title="Close" onPress={props.OnModalClosed}/>
             </View>
         </View>
-    );
-};
+        );
+    }
+}
 
 const styles = StyleSheet.create({
     modalContainer: {
@@ -38,4 +49,9 @@ const styles = StyleSheet.create({
     }
 });
 
-export default placeDetail;
+const mapDispatchToProps = dispatch => {
+    return {
+        onDeletePlace: (key) => dispatch(deletePlace(key))
+    };
+};
+export default connect(null, mapDispatchToProps)(PlaceDetail);
