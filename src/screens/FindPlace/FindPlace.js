@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Button } from 'react-native';
 import {  connect } from 'react-redux';
+import { Ionicons } from '@expo/vector-icons';
 
 import PlaceList from '../../components/PlaceList/PlaceList';
 
 class FindPlaceScreen extends Component {
     static navigationOptions = {
-        title: 'Find Place'
+        title: 'Find Place',
+        headerLeft: (
+            <Ionicons style={{ marginLeft: 10}} name="md-menu" size={25}/>
+        ) //todo: add handling
     }
 
     itemSelectedHandler = key => {
@@ -18,7 +22,6 @@ class FindPlaceScreen extends Component {
     }
 
     render() {
-        const { navigation } = this.props.navigation;
         return (
             <View>
                 <PlaceList places={ this.props.places } OnItemSelected={ this.itemSelectedHandler }/>

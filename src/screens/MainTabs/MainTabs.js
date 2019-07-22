@@ -2,7 +2,7 @@ import React from 'react';
 import FindPlaceScreen from '../FindPlace/FindPlace';
 import SharePlaceScreen from '../SharePlace/SharePlace';
 import PlaceDetail from '../PlaceDetail/PlaceDetail';
-import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createAppContainer, createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
 import { Provider } from 'react-redux';
 import configureStore from '../../store/configureStore';
@@ -33,7 +33,11 @@ const TabNavigator = createBottomTabNavigator(
     }
 );
 
-const AppContainer = createAppContainer(TabNavigator);
+const DrawerNavigator = createDrawerNavigator({
+  TabNavigator: TabNavigator
+});
+
+const AppContainer = createAppContainer(DrawerNavigator);
 
 class TabNavigation extends React.Component{
     render() {

@@ -3,10 +3,14 @@ import { View, Text } from 'react-native';
 import PlaceInput from '../../components/PlaceInput/PlaceInput';
 import { connect } from 'react-redux';
 import { addPlace } from '../../store/actions/index';
+import { Ionicons } from '@expo/vector-icons';
 
 class SharePlaceScreen extends Component {
     static navigationOptions = {
-        title: 'Share Place'
+        title: 'Share Place',
+        headerLeft: (
+            <Ionicons style={{ marginLeft: 10}} name="md-menu" size={25}/>
+        ) //todo: add handling
     }
 
     placeAddedHandler = placeName => {
