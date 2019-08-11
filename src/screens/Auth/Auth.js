@@ -4,6 +4,7 @@ import { View, Text, Button, StyleSheet, ImageBackground } from 'react-native';
 import DefaultInput from '../../components/UI/DefaultInput/DefaultInput';
 import HeadingText from '../../components/UI/HeadingText/HeadingText';
 import MainText from '../../components/UI/MainText/MainText';
+import ButtonWithBackground from '../../components/UI/ButtonWithBackground/ButtonWithBackground';
 import backgroundImage from '../../assets/prairie.jpg';
 
 class AuthScreen extends Component{
@@ -14,6 +15,7 @@ class AuthScreen extends Component{
     onLoginHandler = () => {
         this.props.navigation.navigate('TabNavigation');
     }
+
     render() {
         const { navigation } = this.props.navigation;
         return(
@@ -22,13 +24,13 @@ class AuthScreen extends Component{
                     <MainText>
                         <HeadingText>Please Log in</HeadingText>
                     </MainText> 
-                    <Button title="Switch to Login" />
+                    <ButtonWithBackground color="#29aaf4" onPress={() => alert("Hello")}>Switch to Login</ButtonWithBackground>
                     <View style={styles.inputContainer}>
                         <DefaultInput placeholder="Your Email Address" style={styles.input}/>
                         <DefaultInput placeholder="Password" style={styles.input}/>
                         <DefaultInput placeholder="Confirm Password" style={styles.input}/>
                     </View>
-                    <Button title="Submit" onPress={ this.onLoginHandler }/>
+                    <ButtonWithBackground color="#29aaf4" onPress={this.onLoginHandler}>Submit</ButtonWithBackground>
                 </View>
             </ImageBackground>
         );
